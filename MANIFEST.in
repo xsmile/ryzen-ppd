@@ -1,0 +1,3 @@
+recursive-include scripts *
+include ryzen-ppd.ini
+include README.md

@@ -1,0 +1,11 @@
+[Unit]
+Description=Power management daemon for AMD Ryzen Mobile processors
+After=dbus.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ryzen-ppd
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python distribution
+*.egg-info/
+build/
+dist/
+
+# Project specific
+.idea/
+.mypy_cache/
+config.ini
+setup.cfg
