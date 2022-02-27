@@ -16,10 +16,7 @@ To work around this issue, this application periodically sets power and thermal 
 profiles when the power source changes, e.g. when switching from AC to battery. All limit settings offered by RyzenAdj
 are supported.
 
-Some systems like the Lenovo ThinkPad T14 have a broken DYTC interface that does not work when an ACPI platform profile
-is changed via sysfs at `/sys/firmware/acpi/platform_profile`. Instead, it is possible to force another profile by
-calling the ACPI method with non-default arguments. This seems to be the only way to achieve fan speeds similar
-to those in Windows, while letting the embedded controller retain control.
+Additionally, ACPI platform profiles can be controlled by manually writing to the DYTC method, which is useful for kernels with an outdated thinkpad_acpi module.
 
 ## Requirements
 
