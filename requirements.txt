@@ -1,2 +1,2 @@
 dbus-next==0.2.3
-PyGObject==3.40.1
+PyGObject==3.42.0
