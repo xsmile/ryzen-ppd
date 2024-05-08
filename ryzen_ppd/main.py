@@ -197,10 +197,17 @@ def dbus_subscribe(ac_func: Callable, sleep_func: Callable) -> MessageBus:
     """
     bus = MessageBus(bus_type=BusType.SYSTEM).connect_sync()
 
-    introspection = bus.introspect_sync('org.freedesktop.UPower', '/org/freedesktop/UPower/devices/line_power_AC')
-    obj = bus.get_proxy_object('org.freedesktop.UPower', '/org/freedesktop/UPower/devices/line_power_AC', introspection)
-    properties = obj.get_interface('org.freedesktop.DBus.Properties')
-    properties.on_properties_changed(ac_func)
+    # get all line power device objects on the UPower bus
+    # examples: line_power_AC, line_power_ADP1
+    introspection = bus.introspect_sync('org.freedesktop.UPower', '/org/freedesktop/UPower/devices')
+    obj = bus.get_proxy_object('org.freedesktop.UPower', '/org/freedesktop/UPower/devices', introspection)
+    devices = [d for d in obj.child_paths if 'line_power' in d]
+    # subscribe to property changes on each line power device
+    for device in devices:
+        introspection = bus.introspect_sync('org.freedesktop.UPower', device)
+        obj = bus.get_proxy_object('org.freedesktop.UPower', device, introspection)
+        properties = obj.get_interface('org.freedesktop.DBus.Properties')
+        properties.on_properties_changed(ac_func)
 
     introspection = bus.introspect_sync('org.freedesktop.login1', '/org/freedesktop/login1')
     obj = bus.get_proxy_object('org.freedesktop.login1', '/org/freedesktop/login1', introspection)

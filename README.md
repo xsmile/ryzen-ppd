@@ -23,6 +23,7 @@ Additionally, ACPI platform profiles can be controlled by manually writing to th
 - `python3` and the `setuptools` module
 - `ryzenadj` with the libryzenadj.so library for changing CPU power settings
 - `dbus` for subscribing to power source and sleep signals
+- `upower` for subscribing to power source and sleep signals
 
 ### Optional
 

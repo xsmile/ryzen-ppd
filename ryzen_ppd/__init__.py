@@ -1,7 +1,7 @@
 """Power management daemon for AMD Ryzen Mobile processors."""
 
 __pkgname__ = 'ryzen-ppd'
-__version__ = '0.3'
+__version__ = '0.4.1'
 __description__ = 'Power management daemon for AMD Ryzen Mobile processors'
 __url__ = 'https://github.com/xsmile/ryzen-ppd'
 __author__ = 'xsmile'
